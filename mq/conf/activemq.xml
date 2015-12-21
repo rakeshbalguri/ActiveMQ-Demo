@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:amq="http://activemq.apache.org/schema/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://activemq.apache.org/schema/core
+  http://activemq.apache.org/schema/core/activemq-core.xsd
+  ">
+	<broker xmlns="http://activemq.apache.org/schema/core"
+		brokerName="localhost" dataDirectory="./data">
+		<!-- The transport connectors ActiveMQ will listen to -->
+
+		<managementContext>
+			<managementContext connectorPort="2011" />
+		</managementContext>
+		<networkConnectors> <networkConnector name="broker1->broker2" uri="static:(tcp://141.202.65.31:61619,tcp://10.134.118.87:61620)" 
+			/> </networkConnectors>
+
+		<transportConnectors>
+			<transportConnector name="tcp" uri="tcp://10.134.118.87:61616"
+				enableStatusMonitor="true" />
+			<transportConnector name="amqp" uri="amqp://10.134.118.87:5672"
+				enableStatusMonitor="true" />
+			<transportConnector name="stomp" uri="stomp://10.134.118.87:61613"
+				enableStatusMonitor="true" />
+			<transportConnector name="mqtt"
+				uri="mqtt+nio://localhost:1883" enableStatusMonitor="true" />
+		</transportConnectors>
+
+
+		<plugins>
+        <simpleAuthenticationPlugin>
+            <users>
+                    <authenticationUser
+                    username="admin"
+                    password="pass"
+                    groups="admin" />
+            </users>
+        </simpleAuthenticationPlugin>
+
+    </plugins>
+
+
+
+	</broker>
+</beans>
