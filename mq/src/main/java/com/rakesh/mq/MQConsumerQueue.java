@@ -15,7 +15,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class MQConsumerQueue implements MessageListener{
 	
-	public static String brokerURL = "tcp://SAGRA02-M4800.ca.com:61616";
+	public static String brokerURL = "tcp://localhost:61616";
 	 
     private static Connection connection;
     private static Session session;

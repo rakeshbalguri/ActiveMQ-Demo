@@ -13,7 +13,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class MQProducerLocal1 {
 	
-	public static String brokerURL = "tcp://SAGRA02-M4800.ca.com:61616";
+	public static String brokerURL = "tcp://localhost:61616";
 	
 	public static void main(String[] args) throws JMSException {
 
